@@ -6,7 +6,7 @@ require('./jison/index');
 require('./pegjs/index');
 require('./pegjs-fn/index');
 
-describe.only('benchmark', function() {
+describe('benchmark', function() {
     var jisonParser = require('./jison/index').calc;
     var pegjsParser = require('./pegjs/index').calc;
     var pegjsFnParser = require('./pegjs-fn/index').calc;

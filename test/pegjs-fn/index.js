@@ -7,6 +7,6 @@ module.exports.calc = peg.buildParser(fs.readFileSync(path.join(__dirname, './ca
 
 describe('peg.js-fn', function() {
     it('simple', function() {
-        expect(module.exports.simple.parse('2 + 2 * 2')).to.equal(6);
+        expect(module.exports.calc.parse('2 + 2 * 2')).to.equal(6);
     });
 });
