@@ -6,16 +6,19 @@ require('./jison/index');
 require('./pegjs/index');
 require('./pegjs-fn/index');
 require('./kison/index');
+require('./packrattle/index');
 
 describe('benchmark', function() {
     var jisonParser = require('./jison/index').calc;
     var pegjsParser = require('./pegjs/index').calc;
     var pegjsFnParser = require('./pegjs-fn/index').calc;
     var kisonParser = require('./kison/index').calc;
+    var packrattleParser = require('./packrattle/index').calc;
     expect(jisonParser.parse('2 + 2 * 2')).to.equal(6);
     expect(pegjsParser.parse('2 + 2 * 2')).to.equal(6);
     expect(pegjsFnParser.parse('2 + 2 * 2')).to.equal(6);
     expect(kisonParser.parse('2 + 2 * 2')).to.equal(6);
+    expect(packrattleParser.run('2 + 2 * 2')).to.equal(6);
     this.timeout(100 * 1000);
     it('simple', function(done) {
         new Suite()
@@ -30,6 +33,9 @@ describe('benchmark', function() {
             })
             .add('kisonParser', function() {
                 kisonParser.parse('2 + 2 * 2');
+            })
+            .add('packrattleParser', function() {
+                packrattleParser.run('2 + 2 * 2');
             })
             .on('cycle', function(event) {
                 console.log(String(event.target));
@@ -53,6 +59,9 @@ describe('benchmark', function() {
             })
             .add('kisonParser', function() {
                 kisonParser.parse('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
+            })
+            .add('packrattleParser', function() {
+                packrattleParser.run('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
             })
             .on('cycle', function(event) {
                 console.log(String(event.target));
