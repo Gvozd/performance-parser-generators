@@ -3,7 +3,7 @@ var path = require('path');
 var expect = require('chai').expect;
 var Parser = require("jison").Parser;
 
-module.exports.simple = new Parser(fs.readFileSync(path.join(__dirname, './calc.jison'), {encoding: 'utf8'}));
+module.exports.calc = new Parser(fs.readFileSync(path.join(__dirname, './calc.jison'), {encoding: 'utf8'}));
 
 describe('jison', function() {
     it('simple', function() {
