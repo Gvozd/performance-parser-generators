@@ -1,0 +1,10 @@
+GRAMMAR calc
+Expression ->  Term (_ ("+" / "-") _ Term)*;
+
+Term -> Factor (_ ("*" / "/") _ Factor)*;
+
+Factor -> "(" _ expr:Expression _ ")" / Integer;
+
+Integer -> [0-9]+ ;
+
+_ -> [ \t\n\r]*;

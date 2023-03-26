@@ -2178,6 +2178,11 @@ set-value@^2.0.0, set-value@^2.0.1:
     is-plain-object "^2.0.3"
     split-string "^3.0.1"
 
+simplepeg@^1.2.0:
+  version "1.2.0"
+  resolved "http://localhost:4873/simplepeg/-/simplepeg-1.2.0.tgz#a761e2821f44a482e4ee4cb0edb51704371c8c85"
+  integrity sha512-Wh+vDrzjoTvcIxx8pZAm+5YHSB1dPKLhA6CpHtqVkSvmn4VYT9AC4OxIAhoJmbMQQQndMgGWoUnm7A1zBKoQ9Q==
+
 slash@^1.0.0:
   version "1.0.0"
   resolved "http://localhost:4873/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"

@@ -19,6 +19,7 @@
     "packrattle": "^4.1.0",
     "pegjs": "^0.10.0",
     "pegjs-fn": "^0.1.0",
+    "simplepeg": "^1.2.0",
     "syntax-cli": "0.0.31"
   }
 }
