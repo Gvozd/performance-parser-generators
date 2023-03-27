@@ -17,29 +17,35 @@ module.exports.calc = (() => {
     var Integer = rgx(/[0-9]+/);
     var _ = rgx(/[ \t\n\r]*/).then(_ => void 0);
     function Expression() {
+        var _Term;
         return new Pattern(function (str, pos) {
+            _Term = _Term || Term();
             return seq(
-                Term(),
+                _Term,
                 rep(seq(
-                    _, any(txt('+'), txt('-')), _, Term()
+                    _, any(txt('+'), txt('-')), _, _Term
                 ))
             ).exec(str, pos);
         });
     }
     function Term() {
+        var _Factor;
         return new Pattern(function (str, pos) {
+            _Factor = _Factor || Factor();
             return seq(
-                Factor(),
+                _Factor,
                 rep(seq(
-                    _, any(txt('*'), txt('/')), _, Factor()
+                    _, any(txt('*'), txt('/')), _, _Factor
                 ))
             ).exec(str, pos);
         });
     }
     function Factor() {
+        var _Expression;
         return new Pattern(function (str, pos) {
+            _Expression = _Expression || Expression();
             return any(
-                seq(txt('('), Expression(), txt(')')),
+                seq(txt('('), _Expression, txt(')')),
                 Integer
             ).exec(str, pos);
         });
@@ -54,7 +60,7 @@ module.exports.calc = (() => {
 describe('habr', function() {
     it('simple', function() {
         // AST only
-        // console.log(JSON.stringify(module.exports.calc.parse('2 + 2 * 2'), null, '\t'))
+        console.log(JSON.stringify(module.exports.calc.parse('2 + 2 * 2'), null, '\t'))
         // expect(module.exports.calc.parse('2 + 2 * 2')).to.equal(6);
     });
 });
