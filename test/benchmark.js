@@ -44,7 +44,7 @@ describe('benchmark', function() {
                 packrattleParser.run('2 + 2 * 2');
             })
             .add('simplepegParser', function() {
-                packrattleParser.run('2 + 2 * 2');
+                simplepegParser.parse('2 + 2 * 2');
             })
             .on('cycle', function(event) {
                 console.log(String(event.target));
@@ -73,7 +73,7 @@ describe('benchmark', function() {
                 packrattleParser.run('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
             })
             .add('simplepegParser', function() {
-                packrattleParser.run('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
+                simplepegParser.parse('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
             })
             .on('cycle', function(event) {
                 console.log(String(event.target));
