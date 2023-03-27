@@ -15,7 +15,7 @@ module.exports.calc = (() => {
     //
     // _ -> [ \t\n\r]*;
     var Integer = rgx(/[0-9]+/);
-    var _ = rgx(/[ \t\n\r]*/).then(_ => void 0);
+    var _ = rgx(/[ \t\n\r]*/);
     function Expression() {
         var _Term;
         return new Pattern(function (str, pos) {
