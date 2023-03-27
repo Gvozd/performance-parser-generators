@@ -8,6 +8,7 @@ require('./pegjs-fn/index');
 require('./kison/index');
 require('./packrattle/index');
 require('./simplepeg/index');
+require('./habr/index');
 
 describe('benchmark', function() {
     // TODO https://www.npmjs.com/package/parsly
@@ -20,6 +21,7 @@ describe('benchmark', function() {
     var kisonParser = require('./kison/index').calc;
     var packrattleParser = require('./packrattle/index').calc;
     var simplepegParser = require('./simplepeg/index').calc;
+    var habrParser = require('./habr/index').calc;
     expect(jisonParser.parse('2 + 2 * 2')).to.equal(6);
     expect(pegjsParser.parse('2 + 2 * 2')).to.equal(6);
     expect(pegjsFnParser.parse('2 + 2 * 2')).to.equal(6);
@@ -45,6 +47,9 @@ describe('benchmark', function() {
             })
             .add('simplepegParser', function() {
                 simplepegParser.parse('2 + 2 * 2');
+            })
+            .add('habrParser', function() {
+                habrParser.parse('2 + 2 * 2');
             })
             .on('cycle', function(event) {
                 console.log(String(event.target));
@@ -74,6 +79,9 @@ describe('benchmark', function() {
             })
             .add('simplepegParser', function() {
                 simplepegParser.parse('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
+            })
+            .add('habrParser', function() {
+                habrParser.parse('2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 2 * (3 + 4))))))))))))');
             })
             .on('cycle', function(event) {
                 console.log(String(event.target));
