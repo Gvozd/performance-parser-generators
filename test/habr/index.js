@@ -84,10 +84,16 @@ function txt(text) {
         }
     });
 }
-function rgx(regexp) {
+function rgx(rgxp) {
+    var flags = rgxp.flags;
+    if(!flags.includes('g')) {
+        flags += 'g';
+    }
+    var regexp = new RegExp(rgxp.source, flags);
     return new Pattern(function (str, pos) {
-        var m = regexp.exec(str.slice(pos));
-        if (m && m.index === 0) {
+        regexp.lastIndex = pos;
+        var m = regexp.exec(str);
+        if (m && m.index === pos) {
             // console.log('___ 3', pos, m, m[0], m[0].length, pos + m[0].length);
             return {res: m[0], end: pos + m[0].length};
         }
